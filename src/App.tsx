@@ -1,6 +1,7 @@
 import { Tabs } from "antd";
 import { useReactive } from "./hooks";
 import { useState } from "react";
+import HocMenu from './HocMenu';
 import communicateMenu from "./communicateMenu";
 import React16Menu from "./React16Menu";
 import React18Menu from "./React18Menu";
@@ -10,9 +11,22 @@ import CodeMenu from "./CodeMenu";
 import ExampleMenu from "./ExampleMenu";
 
 function App(props: any) {
-  const [key, setKye] = useState("1");
+  const [key, setKye] = useState("0");
 
   const items = [
+    {
+      key: "0",
+      label: `高阶组件hoc`,
+      children: (
+        <div>
+          <Tabs
+            tabPosition="left"
+            defaultActiveKey="1"
+            items={HocMenu}
+          />
+        </div>
+      ),
+    },
     {
       key: "1",
       label: `通行状态`,
